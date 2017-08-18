@@ -6,5 +6,11 @@
   ["%s dag siden", "%s dage siden"],
   ["%s uge siden", "%s uger siden"],
   ["%s måned siden", "%s måneder siden"],
-  ["%s år siden", "%s år siden"]
+  ["%s år siden", "%s år siden"],
+  ["om %s år", "om %s år"],
+  ["om %s måned", "om %s måneder"],
+  ["om %s uge", "om %s uger"],
+  ["om %s dag", "om %s dage"],
+  ["om %s time", "om %s timer"],
+  ["om %s minut", "om %s minutter"]
 ]

@@ -67,21 +67,38 @@ export default function install(
             : formatTime(this.sinceTime)
         }
 
-        const ret = seconds <= 5
+        const ret
+        
+          = seconds < -YEAR
+          ? pluralOrSingular(-seconds / YEAR, this.currentLocale[8])
+          : seconds < -MONTH
+          ? pluralOrSingular(-seconds / MONTH, this.currentLocale[9])
+          : seconds < -WEEK
+          ? pluralOrSingular(-seconds / WEEK, this.currentLocale[10])
+          : seconds < -DAY
+          ? pluralOrSingular(-seconds / DAY, this.currentLocale[11])
+          : seconds < -HOUR
+          ? pluralOrSingular(-seconds / HOUR, this.currentLocale[12])
+          : seconds < -MINUTE
+          ? pluralOrSingular(-seconds / MINUTE, this.currentLocale[13])
+          ? pluralOrSingular()
+          : seconds <= -5
+          ? pluralOrSingular('just now', this.currentLocale[0])          
+          : seconds <= 5
           ? pluralOrSingular('just now', this.currentLocale[0])
           : seconds < MINUTE
-            ? pluralOrSingular(seconds, this.currentLocale[1])
-            : seconds < HOUR
-              ? pluralOrSingular(seconds / MINUTE, this.currentLocale[2])
-              : seconds < DAY
-                ? pluralOrSingular(seconds / HOUR, this.currentLocale[3])
-                : seconds < WEEK
-                  ? pluralOrSingular(seconds / DAY, this.currentLocale[4])
-                  : seconds < MONTH
-                    ? pluralOrSingular(seconds / WEEK, this.currentLocale[5])
-                    : seconds < YEAR
-                      ? pluralOrSingular(seconds / MONTH, this.currentLocale[6])
-                      : pluralOrSingular(seconds / YEAR, this.currentLocale[7])
+          ? pluralOrSingular(seconds, this.currentLocale[1])
+          : seconds < HOUR
+          ? pluralOrSingular(seconds / MINUTE, this.currentLocale[2])
+          : seconds < DAY
+          ? pluralOrSingular(seconds / HOUR, this.currentLocale[3])
+          : seconds < WEEK
+          ? pluralOrSingular(seconds / DAY, this.currentLocale[4])
+          : seconds < MONTH
+          ? pluralOrSingular(seconds / WEEK, this.currentLocale[5])
+          : seconds < YEAR
+          ? pluralOrSingular(seconds / MONTH, this.currentLocale[6])
+          : pluralOrSingular(seconds / YEAR, this.currentLocale[7]);
 
         return ret
       }
