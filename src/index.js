@@ -67,9 +67,7 @@ export default function install(
             : formatTime(this.sinceTime)
         }
 
-        const ret
-        
-          = seconds < -YEAR
+        const ret = seconds < -YEAR
           ? pluralOrSingular(-seconds / YEAR, this.currentLocale[8])
           : seconds < -MONTH
           ? pluralOrSingular(-seconds / MONTH, this.currentLocale[9])
